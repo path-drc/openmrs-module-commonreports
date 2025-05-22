@@ -131,13 +131,12 @@ public class DRCARTPDVReportManager extends ActivatedReportManager {
 		
 		// ART plan -> Started drugs
 		// Visit in past 90 days
-		/////// ART refill model -> Normal with visit
-		// Not referred
+		// Not transferred in past 6 months
 		String sql = "SELECT DISTINCT p.patient_id FROM patient p WHERE p.voided = 0 "
 		        + "AND EXISTS (SELECT 1 FROM obs o JOIN concept c_question ON o.concept_id = c_question.concept_id JOIN concept c_answer ON o.value_coded = c_answer.concept_id WHERE o.person_id = p.patient_id AND c_question.uuid = '1255AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND c_answer.uuid = '1256AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND o.voided = 0) "
 		        + "AND EXISTS (SELECT 1 FROM visit v WHERE v.patient_id = p.patient_id AND v.date_started BETWEEN DATE_SUB(:onOrBefore, INTERVAL 90 DAY) AND :onOrBefore AND v.voided = 0) "
-				//+ "AND EXISTS (SELECT 1 FROM obs o2 JOIN concept cq2 ON o2.concept_id = cq2.concept_id JOIN concept ca2 ON o2.value_coded = ca2.concept_id WHERE o2.person_id = p.patient_id AND cq2.uuid = '166448AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND ca2.uuid = '166447AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND o2.voided = 0 AND o2.obs_datetime = (SELECT MAX(o3.obs_datetime) FROM obs o3 WHERE o3.person_id = p.patient_id AND o3.concept_id = cq2.concept_id AND o3.voided = 0)) "
-		        + "AND NOT EXISTS (SELECT 1 FROM obs o4 JOIN concept cq4 ON o4.concept_id = cq4.concept_id JOIN concept ca4 ON o4.value_coded = ca4.concept_id WHERE o4.person_id = p.patient_id AND cq4.uuid = '1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND ca4.uuid = 'cf82933b-3f3f-45e7-a5ab-5d31aaee3da3' AND o4.voided = 0 AND o4.obs_datetime = (SELECT MAX(o5.obs_datetime) FROM obs o5 WHERE o5.person_id = p.patient_id AND o5.concept_id = cq4.concept_id AND o5.voided = 0));";
+		        + "AND NOT EXISTS (SELECT 1 FROM obs o_date JOIN concept c_date ON o_date.concept_id = c_date.concept_id WHERE o_date.person_id = p.patient_id AND c_date.uuid = '160649AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND o_date.voided = 0 AND o_date.value_datetime BETWEEN DATE_SUB(:onOrBefore, INTERVAL 180 DAY) AND :onOrBefore ); ";
+		
 		sqd.setQuery(sql);
 		sqd.addParameter(new Parameter("onOrBefore", "On Or Before", Date.class));
 		
