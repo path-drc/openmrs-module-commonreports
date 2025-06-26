@@ -29,10 +29,10 @@ import org.openmrs.module.reporting.data.visit.definition.ObsForVisitDataDefinit
 import org.openmrs.module.reporting.data.visit.service.VisitDataService;
 import org.openmrs.module.reporting.evaluation.EvaluationContext;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ObsOnAgeDataEvaluatorTest extends BaseModuleContextSensitiveTest {
+public class ObsOnAgeDataEvaluatorTest extends BaseModuleContextSensitiveMysqlBackedTest {
 	
 	@Autowired
 	private VisitDataService visitDataService;

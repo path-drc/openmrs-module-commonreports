@@ -21,7 +21,7 @@ import org.testcontainers.lifecycle.Startables;
 
 public abstract class BaseModuleContextSensitiveMysqlBackedTest extends BaseModuleContextSensitiveTest {
 	
-	private static MySQLContainer mysqlContainer = new MySQLContainer("mariadb:10.11.7");
+	private static MySQLContainer mysqlContainer = new MySQLContainer("mysql:5.6.51");
 	
 	private static String databaseUrl = "jdbc:mysql://localhost:DATABASE_PORT/openmrs?autoReconnect=true&sessionVariables=default_storage_engine%3DInnoDB&useUnicode=true&characterEncoding=UTF-8";
 	

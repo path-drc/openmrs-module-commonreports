@@ -23,7 +23,7 @@ import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class ConditionsReportManager2_5Test extends BaseModuleContextSensitiveTest {
+public class ConditionsReportManager2_5Test extends org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest {
 	
 	@Autowired
 	private ReportService rs;

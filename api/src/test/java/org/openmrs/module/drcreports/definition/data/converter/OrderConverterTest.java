@@ -11,10 +11,10 @@ import org.junit.Test;
 import org.openmrs.Order;
 import org.openmrs.api.OrderService;
 import org.openmrs.module.drcreports.data.converter.OrderConverter;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class OrderConverterTest extends BaseModuleContextSensitiveTest {
+public class OrderConverterTest extends BaseModuleContextSensitiveMysqlBackedTest {
 	
 	@Autowired
 	private OrderService orderService;

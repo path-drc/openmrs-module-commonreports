@@ -30,10 +30,10 @@ import org.openmrs.module.reporting.data.person.definition.PreferredNameDataDefi
 import org.openmrs.module.reporting.data.person.service.PersonDataService;
 import org.openmrs.module.reporting.evaluation.EvaluationContext;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class PersonNameAndAttributesDataEvaluatorTest extends BaseModuleContextSensitiveTest {
+public class PersonNameAndAttributesDataEvaluatorTest extends BaseModuleContextSensitiveMysqlBackedTest {
 	
 	@Autowired
 	private PersonService personService;

@@ -33,11 +33,11 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.definition.service.ReportDefinitionService;
 import org.openmrs.module.reporting.report.manager.ReportManagerUtil;
 import org.openmrs.module.reporting.report.service.ReportService;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class OutpatientConsultationReportManagerTest extends BaseModuleContextSensitiveTest {
+public class OutpatientConsultationReportManagerTest extends BaseModuleContextSensitiveMysqlBackedTest {
 	
 	@Autowired
 	private InitializerService iniz;

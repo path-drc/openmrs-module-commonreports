@@ -9,11 +9,11 @@ import org.openmrs.module.drcreports.ActivatedReportManager;
 import org.openmrs.module.initializer.Domain;
 import org.openmrs.module.initializer.api.InitializerService;
 import org.openmrs.module.initializer.api.loaders.Loader;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class TestReportManagerTest extends BaseModuleContextSensitiveTest {
+public class TestReportManagerTest extends BaseModuleContextSensitiveMysqlBackedTest {
 	
 	public static final String COMPONENT_MOCK_REPORTMANAGER = "drcreports.mockReportManager";
 	
