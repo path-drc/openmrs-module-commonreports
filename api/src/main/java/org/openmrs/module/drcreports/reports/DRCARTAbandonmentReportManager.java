@@ -1,4 +1,4 @@
-package org.openmrs.module.commonreports.reports;
+package org.openmrs.module.drcreports.reports;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +13,8 @@ import org.openmrs.VisitType;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.commonreports.ActivatedReportManager;
-import org.openmrs.module.commonreports.CommonReportsConstants;
+import org.openmrs.module.drcreports.ActivatedReportManager;
+import org.openmrs.module.drcreports.DRCReportsConstants;
 import org.openmrs.module.initializer.api.InitializerService;
 import org.openmrs.module.reporting.cohort.definition.CodedObsCohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.CompositionCohortDefinition;
