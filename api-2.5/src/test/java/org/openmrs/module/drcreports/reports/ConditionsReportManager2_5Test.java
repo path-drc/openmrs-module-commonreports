@@ -20,10 +20,11 @@ import org.openmrs.module.reporting.report.definition.service.ReportDefinitionSe
 import org.openmrs.module.reporting.report.manager.ReportManagerUtil;
 import org.openmrs.module.reporting.report.service.ReportService;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class ConditionsReportManager2_5Test extends org.openmrs.module.drcreports.reports.BaseModuleContextSensitiveMysqlBackedTest {
+public class ConditionsReportManager2_5Test extends BaseModuleContextSensitiveTest {
 	
 	@Autowired
 	private ReportService rs;
