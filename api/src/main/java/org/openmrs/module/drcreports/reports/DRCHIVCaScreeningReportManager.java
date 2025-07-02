@@ -8,24 +8,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.openmrs.Concept;
-import org.openmrs.VisitType;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.drcreports.ActivatedReportManager;
-import org.openmrs.module.drcreports.DRCReportsConstants;
 import org.openmrs.module.initializer.api.InitializerService;
 import org.openmrs.module.reporting.cohort.definition.CodedObsCohortDefinition;
-import org.openmrs.module.reporting.cohort.definition.DateObsCohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.CompositionCohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.GenderCohortDefinition;
-import org.openmrs.module.reporting.cohort.definition.NumericObsCohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.BirthAndDeathCohortDefinition;
 
 import org.openmrs.module.reporting.cohort.definition.SqlCohortDefinition;
 import org.openmrs.module.reporting.cohort.definition.VisitCohortDefinition;
 import org.openmrs.module.reporting.common.MessageUtil;
-import org.openmrs.module.reporting.common.RangeComparator;
 import org.openmrs.module.reporting.common.SetComparator;
 import org.openmrs.module.reporting.common.DurationUnit;
 
@@ -40,7 +35,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.openmrs.module.reporting.cohort.definition.BaseObsCohortDefinition.TimeModifier;
 import org.openmrs.module.reporting.cohort.definition.AgeCohortDefinition;
-import org.openmrs.module.reporting.common.DateUtil;
 
 @Component
 public class DRCHIVCaScreeningReportManager extends ActivatedReportManager {
@@ -133,7 +127,7 @@ public class DRCHIVCaScreeningReportManager extends ActivatedReportManager {
 		caScreening.addParameter(new Parameter("onOrAfter", "On Or After", Date.class));
 		caScreening.addParameter(new Parameter("onOrBefore", "On Or Before", Date.class));
 		caScreening.setOperator(SetComparator.IN);
-		caScreening.setQuestion(cs.getConceptByUuid("e5e99fc7-ff2d-4306-aefd-b87a07fc9ab4")); // Screened for cervical cancer during this visit
+		caScreening.setQuestion(cs.getConceptByUuid("e5e99fc7-ff2d-4306-aefd-b87a07fc9ab4")); // Cervical cancer screening status
 		caScreening.setTimeModifier(TimeModifier.LAST);
 		List<Concept> caScreeningAnswers = new ArrayList<Concept>();
 		caScreeningAnswers.add(cs.getConceptByUuid("165619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")); // Cervical cancer screening performed
@@ -141,7 +135,7 @@ public class DRCHIVCaScreeningReportManager extends ActivatedReportManager {
 		
 		SqlCohortDefinition ptLivingWithHIVsqd = new SqlCohortDefinition();
 		
-		//What do you want to do? ---> Enroll new Pt in HIV Care
+		//Patient Type at Enrolment ---> Enroll new Pt in HIV Care
 		String sql = "SELECT DISTINCT p.patient_id FROM patient p WHERE p.voided = 0 "
 		        + "AND EXISTS (SELECT 1 FROM obs o JOIN concept c_question ON o.concept_id = c_question.concept_id JOIN concept c_answer ON o.value_coded = c_answer.concept_id WHERE o.person_id = p.patient_id AND c_question.uuid = '83e40f2c-c316-43e6-a12e-20a338100281' AND c_answer.uuid = '164144AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND o.voided = 0);";
 		ptLivingWithHIVsqd.setQuery(sql);
